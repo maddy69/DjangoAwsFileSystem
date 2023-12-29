@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5"> 
+        <h1 class="mb-4">File List</h1>
+        
+        {% if message %}
+            <div class="alert alert-info" role="alert">
+                {{ message }}
+            </div>
+        {% else %}
+            <ul class="list-group">
+                {% for file in files %}
+                    <li class="list-group-item">
+                        {{ file.file.name }} - {{ file.description }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <a href="{% url 'upload_file' %}" class="btn btn-primary mt-3">Upload a File</a>
+    </div>
+</body>
+</html>
